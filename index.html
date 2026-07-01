@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,7 +26,7 @@
     <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
       <span></span><span></span><span></span>
     </button>
-    <nav class="site-nav" data-nav>
+   <nav class="site-nav" data-nav>
       <a href="#services">Services</a>
       <a href="#planning">Planning</a>
       <a href="#projects">Projects</a>
@@ -52,8 +53,8 @@
           </div>
         </div>
         <div class="hero-visual-wrap">
-          <div class="hero-visual" aria-label="Animated GIS interface preview">
-            <canvas id="mapCanvas" width="760" height="540"></canvas>
+          <div class="hero-visual" aria-label="Interactive GIS interface preview">
+            <div id="map"></div>
             <div class="visual-scanline" aria-hidden="true"></div>
           </div>
           <div class="hero-panels">
@@ -387,6 +388,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="script.js"></script>
 </body>
 </html>

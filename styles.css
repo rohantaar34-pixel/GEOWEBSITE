@@ -147,6 +147,16 @@ h3 {
   border-bottom: 1px solid var(--dark-line);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, height 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(6, 16, 35, 0.45);
+  border-bottom-color: rgba(255,255,255,0.06);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.32), 0 1px 0 rgba(98,185,255,0.08);
+  height: 60px;
 }
 
 .brand {
@@ -384,11 +394,92 @@ h3 {
   background: var(--logo-navy);
 }
 
-#mapCanvas {
+#map {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: 480px;
+  height: 480px;
+  background: var(--logo-navy);
+}
+
+/* ── Leaflet Theme Overrides ── */
+.leaflet-container {
+  background: var(--logo-navy);
+  font-family: "DM Sans", Arial, sans-serif;
+}
+.leaflet-control-zoom {
+  border: 1px solid var(--dark-line) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+}
+.leaflet-control-zoom a {
+  background-color: rgba(6, 16, 35, 0.85) !important;
+  color: var(--green) !important;
+  border-bottom: 1px solid var(--dark-line) !important;
+  backdrop-filter: blur(4px);
+}
+.leaflet-control-zoom a:hover {
+  background-color: var(--dark-2) !important;
+  color: var(--white) !important;
+}
+.leaflet-control-attribution {
+  background: rgba(6, 16, 35, 0.7) !important;
+  color: var(--muted) !important;
+  backdrop-filter: blur(4px);
+}
+.leaflet-control-attribution a {
+  color: var(--blue-mid) !important;
+}
+
+/* ── Custom Pulsing Marker ── */
+.gis-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gis-marker::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: var(--green);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.gis-marker::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--green);
+}
+
+.gis-marker.inactive::before { display: none; }
+.gis-marker.inactive::after {
+  background-color: var(--blue);
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.gis-marker-label {
+  position: absolute;
+  left: 20px;
+  top: -4px;
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.5); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
 }
 
 .visual-scanline {
